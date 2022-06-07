@@ -1,0 +1,79 @@
+Change Build Number
+
+android/app/build.gradle
+
+generate key store (release keystore) =>
+
+refrence-link: ->> https://medium.com/geekculture/react-native-generate-apk-debug-and-release-apk-4e9981a2ea51
+command :>>  keytool -genkey -v -keystore garaaz.keystore -alias garaaz-1 -keyalg RSA -keysize 2048 -validity 10000
+
+-------------------------------------------------------
+
+Steps:-->
+
+1. react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+
+2. cd android
+
+3. gradlew assembleRelease
+
+4. gradlew bundleRelease
+
+------------------------------------------------------------
+
+if error of multiple files // duplicate resources
+
+E:\app_zevio\generic\android\app\src\main\res
+
+open this folder and remove files from here
+
+
+----------------------------------------------------------------------------
+
+Calling `[node, E:\app_zevio\generic\node_modules\react-native\node_modules\@react-native-community\cli\build\bin.js, config]` finished with an exception. Error message: groovy.json.JsonException: Unable to determine the current character, it is not
+a string, number, array, or object
+
+  The current character read is 'E' with an int value of 69
+  Unable to determine the current character, it is not a string, number, array, or object
+  line number 1
+  index number 0
+  
+  
+For this error --
+
+  
+Update the @react-native-community/cli to the latest version.
+
+-----------------------------------------------------------------------------------------------------
+A failure occurred while executing com.android.build.gradle.internal.tasks.FinalizeBundleTask$BundleToolRunnable
+   > java.lang.OutOfMemoryError (no error message)
+
+try 3 to 4 times same command 
+can use multiDexEnabled true in app/build.gradle in defaultconfig {...}
+
+----------------------------------------------------------------------------------------------
+E:\app_zevio\generic\android\app\build\outputs\apk\release
+
+copy apk from here
+
+E:\app_zevio\generic\android\app\build\outputs\bundle\release
+
+Copy aab file from here
+
+
+--------------------------------------------------------------------------------------------
+
+> Task :app:signReleaseBundle FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:signReleaseBundle'.
+> A failure occurred while executing com.android.build.gradle.internal.tasks.FinalizeBundleTask$BundleToolRunnable
+   > Java heap space
+
+try 3 -4 times
+
+
+
+
